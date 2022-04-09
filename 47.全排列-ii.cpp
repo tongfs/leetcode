@@ -74,8 +74,8 @@ public:
                 if (i && nums[i] == nums[i - 1] && !st[i - 1]) continue;
                 st[i] = true;
                 path[u] = nums[i];
-                dfs2(u + 1, nums);
                 st[i] = false;
+                dfs2(u + 1, nums);
             }
         }
     }
