@@ -34,6 +34,15 @@ public:
             }
         }
 
+        // 优化成一维
+        /* for (int i = 1; i <= n; i ++ ) {
+            for (int j = k; j >= 0; j -- ) {
+                f[j] = max(f[j], g[j] + prices[i - 1]);
+                if (j) g[j] = max(g[j], f[j - 1] - prices[i - 1]);
+                res = max(res, f[j]);
+            }
+        } */
+
         return res;
     }
 };
