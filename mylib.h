@@ -33,3 +33,19 @@ public:
     Node(int _val, Node* _left, Node* _right, Node* _next)
         : val(_val), left(_left), right(_right), next(_next) {}
 };
+
+// nested list
+class NestedInteger {
+   public:
+     // Constructor initializes an empty nested list.
+     NestedInteger();
+
+     // Constructor initializes a single integer.
+     NestedInteger(int value);
+
+     // Set this NestedInteger to hold a single integer.
+     void setInteger(int value);
+
+     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+     void add(const NestedInteger &ni);
+ };
