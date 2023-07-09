@@ -9,18 +9,18 @@
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
-        int d = 0x3f3f3f3f, res, n = nums.size();
+        int d = 0x3f3f3f3f, res;
         sort(nums.begin(), nums.end());
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < nums.size(); i++) {
             if (i && nums[i] == nums[i - 1]) continue;
-            int j = i + 1, k = n - 1;
+            int j = i + 1, k = nums.size() - 1;
             while (j < k) {
-                int t = nums[i] + nums[j] + nums[k] - target;
-                if (d > abs(t)) {
-                    d = abs(t);
-                    res = nums[i] + nums[j] + nums[k];
+                int t = nums[i] + nums[j] + nums[k];
+                if (d > abs(t - target)) {
+                    d = abs(t - target);
+                    res = t;
                 }
-                if (t < 0) j++;
+                if (t < target) j++;
                 else k--;
             }
         }
