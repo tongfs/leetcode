@@ -11,24 +11,29 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int n = s.size();
-        string res;
+        int n = s.size(), st, len = 0;
 
         for (int i = 0; i < n; i++) {
-            int l = i - 1, r = i + 1;
-            while (l >= 0 && r < n && s[l] == s[r]) l--, r++;
-            if (r - l - 1 > res.size())
-                res = s.substr(l + 1, r - l - 1);
+            for (int l = i, r = i; l >= 0 && r < n; l--, r++) {
+                if (s[l] != s[r]) break;
+                if (r - l + 1 > len) {
+                    len = r - l + 1;
+                    st = l;
+                }
+            }
         }
 
         for (int i = 0; i < n; i++) {
-            int l = i, r = i + 1;
-            while (l >= 0 && r < n && s[l] == s[r]) l--, r++;
-            if (r - l - 1 > res.size())
-                res = s.substr(l + 1, r - l - 1);
+            for (int l = i, r = i + 1; l >= 0 && r < n; l--, r++) {
+                if (s[l] != s[r]) break;
+                if (r - l + 1 > len) {
+                    len = r - l + 1;
+                    st = l;
+                }
+            }
         }
 
-        return res;
+        return s.substr(st, len);
     }
 };
 // @lc code=end

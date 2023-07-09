@@ -13,10 +13,11 @@ public:
     int lengthOfLongestSubstring(string s) {
         unordered_map<char, int> map;
         int res = 0;
-        for (int i = 0, j = 0; s[j]; j++) {
-            map[s[j]]++;
-            while (map[s[j]] > 1) map[s[i++]]--;
-            res = max(res, j - i + 1);
+        for (int i = 0, j = 0; s[i]; i++) {
+            char c = s[i];
+            map[c]++;
+            while (map[c] > 1) map[s[j++]]--;
+            res = max(res, i - j + 1);
         }
         return res;
     }
