@@ -11,11 +11,9 @@
 class Solution {
 public:
     int kItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k) {
-        int res = min(k, numOnes);
-        k -= numOnes;
-        if (k < 0) return res;
-        k -= numZeros;
-        return res - max(0, k);
+        if (k <= numOnes) return k;
+        if (k <= numOnes + numZeros) return numOnes;
+        return numOnes - (k - numOnes - numZeros);
     }
 };
 // @lc code=end
