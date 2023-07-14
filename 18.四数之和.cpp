@@ -4,15 +4,14 @@
  *
  * [18] 四数之和
  */
-
 #include "mylib.h"
 // @lc code=start
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         int n = nums.size();
-        vector<vector<int>> res;
         sort(nums.begin(), nums.end());
+        vector<vector<int>> res;
         for (int i = 0; i < n; i++) {
             if (i && nums[i] == nums[i - 1]) continue;
             for (int j = i + 1; j < n; j++) {
