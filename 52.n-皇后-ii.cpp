@@ -4,9 +4,7 @@
  *
  * [52] N 皇后 II
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
@@ -15,7 +13,7 @@ public:
 
     int totalNQueens(int n) {
         col = vector<bool>(n);
-        dg = udg = vector<bool>(n * 2);
+        dg = udg = vector<bool>(2 * n);
 
         dfs(0, n);
         return res;

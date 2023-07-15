@@ -4,23 +4,20 @@
  *
  * [46] 全排列
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
-    vector<bool> st;
+    bool st[6];
     vector<int> path;
     vector<vector<int>> res;
 
     vector<vector<int>> permute(vector<int>& nums) {
-        st = vector<bool>(nums.size());
-        dfs(0, nums);
+        dfs(nums, 0);
         return res;
     }
 
-    void dfs(int u, vector<int>& nums) {
+    void dfs(vector<int>& nums, int u) {
         if (u == nums.size()) {
             res.push_back(path);
             return;
@@ -30,7 +27,7 @@ public:
             if (!st[i]) {
                 st[i] = true;
                 path.push_back(nums[i]);
-                dfs(u + 1, nums);
+                dfs(nums, u + 1);
                 path.pop_back();
                 st[i] = false;
             }

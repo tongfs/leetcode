@@ -4,9 +4,7 @@
  *
  * [4] 寻找两个正序数组的中位数
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
@@ -25,17 +23,12 @@ public:
         if (nums1.size() - i > nums2.size() - j)
             return find(nums2, j, nums1, i, k);
         
-        // 边界处理：
-        // 1. 如果第一个数组是空的，则直接返回第二个数组的第 k 个数
         if (nums1.size() == i) return nums2[j + k - 1];
-
-        // 2. 如果要找第一个数，则返回两个数组头部数字的最小值
         if (k == 1) return min(nums1[i], nums2[j]);
 
-        // 由于 nums1 比较短，可能会越界
         int si = min((int)nums1.size(), i + k / 2), sj = j + k - k / 2;
         if (nums1[si - 1] >= nums2[sj - 1])
-            return find(nums1, i, nums2, sj, k - (sj - j));
+            return find(nums1, i, nums2, sj, k / 2);
         else
             return find(nums1, si, nums2, j, k - (si - i));
     }
