@@ -1,12 +1,10 @@
 /*
  * @lc app=leetcode.cn id=445 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [445] 两数相加 II
  */
-
 #include "mylib.h"
-
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -33,10 +31,9 @@ public:
         return reverse(dummy->next);
     }
 
-private:
     ListNode* reverse(ListNode* head) {
-        if (!head)  return nullptr;
-        auto a = head, b = head->next;
+        if (!head) return nullptr;
+        auto a = head, b = a->next;
         while (b) {
             auto c = b->next;
             b->next = a;

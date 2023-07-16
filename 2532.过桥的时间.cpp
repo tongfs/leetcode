@@ -1,17 +1,15 @@
 /*
  * @lc app=leetcode.cn id=2532 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [2532] 过桥的时间
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
     int findCrossingTime(int n, int k, vector<vector<int>>& time) {
-        typedef pair<int, int> PII;
+        using PII = pair<int, int>;
         auto cmp = [&](int x, int y) {
             int time_x = time[x][0] + time[x][2];
             int time_y = time[y][0] + time[y][2];
@@ -24,6 +22,7 @@ public:
         int remain = n, cur_time = 0;
         for (int i = 0; i < k; i++) wait_left.push(i);
 
+        // 当还有箱子需要搬运，或者右岸还有在作业或者等待的工人
         while (remain || work_right.size() || wait_right.size()) {
             while (work_left.size() && work_left.top().first <= cur_time) {
                 wait_left.push(work_left.top().second);
@@ -47,9 +46,9 @@ public:
                 remain--;
             } else {
                 int next_time = INT_MAX;
-                if (work_left.size())  next_time = min(next_time, work_left.top().first);
+                if (work_left.size()) next_time = min(next_time, work_left.top().first);
                 if (work_right.size()) next_time = min(next_time, work_right.top().first);
-                if (next_time != INT_MAX)  cur_time = max(cur_time, next_time);
+                if (next_time != INT_MAX) cur_time = next_time;
             }
         }
 

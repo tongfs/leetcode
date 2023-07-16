@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=70 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [70] 爬楼梯
  */
@@ -10,8 +10,8 @@ class Solution {
 public:
     int climbStairs(int n) {
         int f[2] = {1, 2};
-        for (int i = 3; i <= n; i++) f[i - 1 & 1] += f[i & 1];
-        return f[n - 1 & 1];
+        for (int i = 3; i <= n; i++) f[(i - 1)& 1] += f[i & 1];
+        return f[(n - 1) & 1];
     }
 };
 // @lc code=end

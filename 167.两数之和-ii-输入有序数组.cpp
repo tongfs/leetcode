@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=167 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [167] 两数之和 II - 输入有序数组
  */
