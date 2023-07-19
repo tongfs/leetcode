@@ -1,23 +1,21 @@
 /*
  * @lc app=leetcode.cn id=3 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [3] 无重复字符的最长子串
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         unordered_map<char, int> map;
         int res = 0;
-        for (int i = 0, j = 0; s[i]; i++) {
-            char c = s[i];
-            map[c]++;
-            while (map[c] > 1) map[s[j++]]--;
-            res = max(res, i - j + 1);
+        for (int i = 0, j = 0; j < s.size(); j++) {
+            int u = s[j];
+            map[u]++;
+            while (map[u] > 1) map[s[i++]]--;
+            res = max(res, j - i + 1);
         }
         return res;
     }

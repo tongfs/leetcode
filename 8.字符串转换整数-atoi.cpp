@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=8 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [8] 字符串转换整数 (atoi)
  */
@@ -10,19 +10,14 @@ class Solution {
 public:
     int myAtoi(string s) {
         int k = 0;
+        while (s[k] && s[k] == ' ') k++;
 
-        // 去掉前导空格
-        while (k < s.size() && s[k] == ' ') k++;
-        if (k == s.size()) return 0;
-
-        // 确定正负号
         int sign = 1;
         if (s[k] == '-') sign = -1, k++;
         else if (s[k] == '+') k++;
-        
-        // 计算数值部分
+
         int res = 0;
-        while (k < s.size() && isdigit(s[k])) {
+        while (s[k] && isdigit(s[k])) {
             int u = s[k] - '0';
             if (res > (INT_MAX - u) / 10) {
                 if (sign == 1) return INT_MAX;
@@ -31,7 +26,6 @@ public:
             res = res * 10 + u;
             k++;
         }
-
         return res * sign;
     }
 };

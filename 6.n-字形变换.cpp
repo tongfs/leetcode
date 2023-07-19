@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=6 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [6] N 字形变换
  */
