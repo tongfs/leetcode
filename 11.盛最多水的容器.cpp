@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=11 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [11] 盛最多水的容器
  */
@@ -11,9 +11,10 @@ public:
     int maxArea(vector<int>& height) {
         int res = 0;
         for (int i = 0, j = height.size() - 1; i < j; ) {
-            res = max(res, (j - i) * min(height[i], height[j]));
-            if (height[i] > height[j]) j--;
-            else i++;
+            int t = min(height[j], height[i]) * (j - i);
+            res = max(res, t);
+            if (height[i] < height[j]) i++;
+            else j--;
         }
         return res;
     }

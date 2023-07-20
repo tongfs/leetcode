@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=16 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [16] 最接近的三数之和
  */
@@ -16,12 +16,12 @@ public:
             int j = i + 1, k = nums.size() - 1;
             while (j < k) {
                 int t = nums[i] + nums[j] + nums[k];
-                if (d > abs(t - target)) {
+                if (abs(t - target) < d) {
                     d = abs(t - target);
                     res = t;
                 }
-                if (t < target) j++;
-                else k--;
+                if (t - target > 0) k--;
+                else j++;
             }
         }
         return res;
