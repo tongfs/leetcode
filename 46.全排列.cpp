@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=46 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [46] 全排列
  */

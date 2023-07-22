@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=25 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [25] K 个一组翻转链表
  */

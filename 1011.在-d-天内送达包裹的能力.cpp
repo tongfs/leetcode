@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=1011 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [1011] 在 D 天内送达包裹的能力
  */
@@ -14,8 +14,7 @@ public:
         int l = max_w, r = sum;
         while (l < r) {
             int mid = l + r >> 1;
-            bool res = check(weights, mid, days);
-            if (res) r = mid;
+            if (check(weights, mid, days)) r = mid;
             else l = mid + 1;
         }
         return l;
@@ -36,6 +35,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // [1,2,3,4,5,6,7,8,9,10]\n5\n
@@ -50,3 +51,4 @@ public:
 // @lcpr case=end
 
  */
+

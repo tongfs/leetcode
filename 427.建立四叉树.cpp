@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=427 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [427] 建立四叉树
  */
@@ -56,13 +56,12 @@ public:
         if (x1 > x2) return nullptr;
 
         if (check(grid, x1, y1, x2, y2))
-            return new Node(grid[x1][y1], true);
+            return new Node(grid[x1][y1], 1);
         
-
         auto tl = dfs(grid, x1, y1, x1 + x2 >> 1, y1 + y2 >> 1);
-        auto tr = dfs(grid, x1, (y1 + y2 >> 1) + 1, x1 + x2 >> 1, y2);
-        auto bl = dfs(grid,( x1 + x2 >> 1) + 1, y1, x2, y1 + y2 >> 1);
-        auto br = dfs(grid, (x1 + x2 >> 1) + 1, (y1 + y2 >> 1) + 1, x2, y2);
+        auto tr = dfs(grid, x1, y1 + y2 + 1 >> 1, x1 + x2 >> 1, y2);
+        auto bl = dfs(grid, x1 + x2 + 1 >> 1, y1, x2, y1 + y2 >> 1);
+        auto br = dfs(grid, x1 + x2 + 1 >> 1, y1 + y2 + 1 >> 1, x2, y2);
         return new Node(1, 0, tl, tr, bl, br);
     }
 

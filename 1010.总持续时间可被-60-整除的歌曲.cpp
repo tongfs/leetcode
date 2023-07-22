@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=1010 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [1010] 总持续时间可被 60 整除的歌曲
  */
@@ -11,8 +11,8 @@ public:
     int numPairsDivisibleBy60(vector<int>& time) {
         int res = 0;
         unordered_map<int, int> map;
-        for (auto x : time) {
-            int t = (x - 1) % 60 + 1;
+        for (auto t : time) {
+            t = (t - 1) % 60 + 1;
             if (map.count(60 - t)) {
                 res += map[60 - t];
             }
@@ -22,6 +22,8 @@ public:
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -33,3 +35,4 @@ public:
 // @lcpr case=end
 
  */
+

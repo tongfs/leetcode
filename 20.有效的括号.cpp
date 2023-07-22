@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=20 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [20] 有效的括号
  */
@@ -11,13 +11,13 @@ public:
     bool isValid(string s) {
         if (s.size() & 1) return false;
 
+        unordered_map<char, int> map = {{'(', ')'}, {'[', ']'}, {'{', '}'}};
         stack<char> stk;
-        unordered_map<char, int> map{{'(', -1}, {')', 1},  {'[', -2},
-                                     {']', 2},  {'{', -3}, {'}', 3}};
         for (auto c : s) {
-            if (map[c] < 0) stk.push(c);
-            else {
-                if (stk.size() && map[c] + map[stk.top()] == 0) stk.pop();
+            if (map.count(c)) {
+                stk.push(c);
+            } else {
+                if (stk.size() && c == map[stk.top()]) stk.pop();
                 else return false;
             }
         }

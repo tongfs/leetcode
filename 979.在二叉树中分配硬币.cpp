@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=979 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [979] 在二叉树中分配硬币
  */
