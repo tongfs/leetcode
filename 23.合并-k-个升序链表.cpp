@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=23 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [23] 合并 K 个升序链表
  */
@@ -19,18 +19,11 @@
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        return method1(lists);
-    }
-
-    /**
-     * heap
-     */
-    ListNode* method1(vector<ListNode*> lists) {
-        auto cmp = [&](const ListNode* l1, const ListNode* l2) {
+        auto cmp = [&](ListNode* l1, ListNode* l2) {
             return l1->val > l2->val;
         };
-
         priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> heap(cmp);
+
         for (auto l : lists) if (l) heap.push(l);
         auto dummy = new ListNode(), cur = dummy;
         while (heap.size()) {
@@ -39,38 +32,13 @@ public:
             cur = cur->next = t;
             if (t->next) heap.push(t->next);
         }
-
-        return dummy->next;
-    }
-
-    /**
-     * merge
-     */
-    ListNode* method2(vector<ListNode*> lists) {
-        if (lists.empty()) return nullptr;
-        return myMergeKLists(lists, 0, lists.size() - 1);
-    }
-
-    ListNode* myMergeKLists(vector<ListNode*> lists, int l, int r) {
-        if (l == r) return lists[l];
-        int mid = l + r >> 1;
-        auto l1 = myMergeKLists(lists, l, mid);
-        auto l2 = myMergeKLists(lists, mid + 1, r);
-        return merge2Lists(l1, l2);
-    }
-
-    ListNode* merge2Lists(ListNode* l1, ListNode* l2) {
-        auto dummy = new ListNode(), cur = dummy;
-        while (l1 && l2) {
-            if (l1->val < l2->val) cur = cur->next = l1, l1 = l1->next;
-            else cur = cur->next = l2, l2 = l2->next;
-        }
-        if (l1) cur->next = l1;
-        if (l2) cur->next = l2;
+        
         return dummy->next;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -86,3 +54,4 @@ public:
 // @lcpr case=end
 
  */
+

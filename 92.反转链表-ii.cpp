@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=19 lang=cpp
+ * @lc app=leetcode.cn id=92 lang=cpp
  * @lcpr version=21910
  *
- * [19] 删除链表的倒数第 N 个结点
+ * [92] 反转链表 II
  */
 #include "mylib.h"
 // @lc code=start
@@ -18,13 +18,19 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int len = 0;
-        for (auto p = head; p; p = p->next) len++;
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        auto dummy = new ListNode(-1, head), p = dummy;
+        for (int i = 1; i < left; i++) p = p->next;
 
-        auto dummy = new ListNode(-1, head), cur = dummy;
-        for (int i = 0; i < len - n; i++) cur = cur->next;
-        cur->next = cur->next->next;
+        auto a = p->next, b = a->next;
+        for (int i = 0; i < right - left; i++) {
+            auto c = b->next;
+            b->next = a;
+            a = b, b = c;
+        }
+        p->next->next = b;
+        p->next = a;
+
         return dummy->next;
     }
 };
@@ -34,15 +40,11 @@ public:
 
 /*
 // @lcpr case=start
-// [1,2,3,4,5]\n2\n
+// [1,2,3,4,5]\n2\n4\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [1]\n1\n
-// @lcpr case=end
-
-// @lcpr case=start
-// [1,2]\n1\n
+// [5]\n1\n1\n
 // @lcpr case=end
 
  */
