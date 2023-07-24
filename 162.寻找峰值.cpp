@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=162 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [162] 寻找峰值
  */

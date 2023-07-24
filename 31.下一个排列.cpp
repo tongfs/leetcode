@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=31 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [31] 下一个排列
  */
@@ -14,8 +14,8 @@ public:
 
         if (k) {
             int t = nums.size() - 1;
-            while (k < t && nums[t] <= nums[k - 1]) t--;
-            swap(nums[t], nums[k - 1]);
+            while (nums[k - 1] >= nums[t]) t--;
+            swap(nums[k - 1], nums[t]);
         }
 
         reverse(nums.begin() + k, nums.end());
