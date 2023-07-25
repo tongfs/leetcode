@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=14 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [14] 最长公共前缀
  */
@@ -22,6 +22,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // ["flower","flow","flight"]\n
@@ -32,3 +34,4 @@ public:
 // @lcpr case=end
 
  */
+

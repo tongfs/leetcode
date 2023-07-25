@@ -1,12 +1,10 @@
 /*
  * @lc app=leetcode.cn id=2 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [2] 两数相加
  */
-
 #include "mylib.h"
-
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -20,7 +18,7 @@
  */
 class Solution {
 public:
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         auto dummy = new ListNode(), cur = dummy;
         for (int t = 0; l1 || l2 || t; ) {
             if (l1) t += l1->val, l1 = l1->next;
@@ -32,6 +30,8 @@ public:
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -47,3 +47,4 @@ public:
 // @lcpr case=end
 
  */
+

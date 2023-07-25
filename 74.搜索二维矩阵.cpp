@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=74 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [74] 搜索二维矩阵
  */
@@ -13,11 +13,9 @@ public:
         int l = 0, r = n * m - 1;
         while (l < r) {
             int mid = l + r >> 1;
-            int i = mid / m, j = mid % m;
-            if (matrix[i][j] >= target) r = mid;
+            if (matrix[mid / m][mid % m] >= target) r = mid;
             else l = mid + 1;
         }
-
         return matrix[l / m][l % m] == target;
     }
 };
