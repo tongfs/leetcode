@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=154 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [154] 寻找旋转排序数组中的最小值 II
  */
@@ -9,8 +9,9 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        while (nums.size() > 1 && nums.back() == nums[0]) nums.pop_back();
-
+        while (nums.size() > 1 && nums.back() == nums[0])
+            nums.pop_back();
+        
         int l = 0, r = nums.size() - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;

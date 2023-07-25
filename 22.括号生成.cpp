@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=22 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [22] 括号生成
  */
@@ -20,11 +20,14 @@ public:
             res.push_back(path);
             return;
         }
+
         if (l < n) dfs(l + 1, r, n, path + '(');
         if (l > r) dfs(l, r + 1, n, path + ')');
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -36,3 +39,4 @@ public:
 // @lcpr case=end
 
  */
+
