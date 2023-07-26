@@ -13,7 +13,7 @@ public:
         auto cmp = [&](int x, int y) {
             int time_x = time[x][0] + time[x][2];
             int time_y = time[y][0] + time[y][2];
-            return time_x != time_y ? time_x < time_y : x < y;
+            return time_x == time_y ? x < y : time_x < time_y;
         };
 
         priority_queue<int, vector<int>, decltype(cmp)> wait_left(cmp), wait_right(cmp);
@@ -22,7 +22,6 @@ public:
         int remain = n, cur_time = 0;
         for (int i = 0; i < k; i++) wait_left.push(i);
 
-        // 当还有箱子需要搬运，或者右岸还有在作业或者等待的工人
         while (remain || work_right.size() || wait_right.size()) {
             while (work_left.size() && work_left.top().first <= cur_time) {
                 wait_left.push(work_left.top().second);
@@ -57,6 +56,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // 1\n3\n[[1,1,2,1],[1,1,3,1],[1,1,4,1]]\n
@@ -67,3 +68,4 @@ public:
 // @lcpr case=end
 
  */
+

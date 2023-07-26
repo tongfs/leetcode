@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=2544 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [2544] 交替数字和
  */
@@ -9,15 +9,17 @@
 class Solution {
 public:
     int alternateDigitSum(int n) {
-        int len = 0, res = 0, sign = 1;
+        int len = 0, res = 0;
         for (int sign = 1; n; n /= 10, len++, sign = -sign)
             res += n % 10 * sign;
-
-        if ((len & 1) == 0) return -res;
+        
+        if ((len & 1) == 0) res = -res;
         return res;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -33,3 +35,4 @@ public:
 // @lcpr case=end
 
  */
+

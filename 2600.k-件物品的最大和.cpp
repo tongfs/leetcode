@@ -1,12 +1,10 @@
 /*
  * @lc app=leetcode.cn id=2600 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [2600] K 件物品的最大和
  */
-
 #include "mylib.h"
-
 // @lc code=start
 class Solution {
 public:
@@ -18,6 +16,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // 3\n2\n0\n2\n
@@ -28,3 +28,4 @@ public:
 // @lcpr case=end
 
  */
+
