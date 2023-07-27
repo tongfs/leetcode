@@ -13,14 +13,14 @@ public:
         sort(intervals.begin(), intervals.end());
 
         using PII = pair<int, int>;
-        vector<PII> index;
-        for (int i = 0; i < m; i++) index.push_back({queries[i], i});
+        vector<PII> index(m);
+        for (int i = 0; i < m; i++) index[i] = {queries[i], i};
         sort(index.begin(), index.end());
-
+        
         vector<int> res(m, -1);
         priority_queue<PII, vector<PII>, greater<PII>> heap;
 
-        for (int k = 0, i = 0; i < m; i++) {
+        for (int i = 0, k = 0; i < m; i++) {
             int x = index[i].first, y = index[i].second;
             while (k < n && intervals[k][0] <= x) {
                 int l = intervals[k][0], r = intervals[k][1];
@@ -36,6 +36,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // [[1,4],[2,4],[3,6],[4,4]]\n[2,3,4,5]\n
@@ -46,3 +48,4 @@ public:
 // @lcpr case=end
 
  */
+

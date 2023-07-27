@@ -23,14 +23,13 @@ public:
                 if (c == -1) d = (d + 1) % 4;
                 continue;
             }
-            for (int i = 0; i < c; i++) {
+            for (int i = 1; i <= c; i++) {
                 int a = x + dx[d], b = y + dy[d];
                 if (set.count(a * 60001 + b)) break;
                 x = a, y = b;
                 res = max(res, x * x + y * y);
             }
         }
-
         return res;
     }
 };

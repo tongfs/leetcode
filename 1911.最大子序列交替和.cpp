@@ -9,16 +9,17 @@
 class Solution {
 public:
     long long maxAlternatingSum(vector<int>& nums) {
-        vector<long long> f(2);
-        f[0] = nums[0];
+        long long even = nums[0], odd = 0;
         for (int i = 1; i < nums.size(); i++) {
-            f[0] = max(f[0], f[1] + nums[i]);
-            f[1] = max(f[1], f[0] - nums[i]);
+            even = max(even, odd + nums[i]);
+            odd = max(odd, even - nums[i]);
         }
-        return f[0];
+        return even;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -34,3 +35,4 @@ public:
 // @lcpr case=end
 
  */
+
