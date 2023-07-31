@@ -19,26 +19,30 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        stack<ListNode*> stk;
-        
-        int cnt = 0;
-        for (auto p = head; p; p = p->next) cnt++;
-        
-        int t = cnt;
-        for (auto p = head; p; p = p->next) {
-            if (t >= 1) t -= 2;
-            else stk.push(p);
+        auto dummy = new ListNode();
+        auto slow = head, fast = head->next;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        auto t = slow->next;
+        while (t) {
+            auto p = t;
+            t = t->next;
+            p->next = dummy->next;
+            dummy->next = p;
         }
 
-        auto p = head;
-        for (; stk.size(); p = p->next->next) {
-            auto t = stk.top();
-            stk.pop();
-            t->next = p->next;
-            p->next = t;
+        auto cur = head;
+        while (dummy->next) {
+            auto p = dummy->next;
+            dummy->next = p->next;
+            p->next = cur->next;
+            cur->next = p;
+            cur = p->next;
         }
 
-        if (p) p->next = nullptr;
+        if (cur) cur->next = nullptr;
     }
 };
 // @lc code=end
