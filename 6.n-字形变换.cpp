@@ -14,13 +14,13 @@ public:
         int d = numRows * 2 - 2;
         string res;
         for (int i = 0; i < numRows; i++) {
-            if (i == 0 || i == numRows - 1) {
+            if (!i || i == numRows - 1) {
                 for (int j = i; j < s.size(); j += d)
                     res += s[j];
             } else {
-                for (int a = i, b = d - i; a < s.size(); a += d, b += d) {
-                    res += s[a];
-                    if (b < s.size()) res += s[b];
+                for (int j = i, k = d - i; j < s.size(); j += d, k += d) {
+                    res += s[j];
+                    if (k < s.size()) res += s[k];
                 }
             }
         }
@@ -28,6 +28,8 @@ public:
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -43,3 +45,4 @@ public:
 // @lcpr case=end
 
  */
+

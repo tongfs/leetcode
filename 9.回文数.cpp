@@ -17,10 +17,12 @@ public:
             res = res * 10 + t % 10;
             t /= 10;
         }
-        return x == res;
+        return res == x;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -36,3 +38,4 @@ public:
 // @lcpr case=end
 
  */
+
