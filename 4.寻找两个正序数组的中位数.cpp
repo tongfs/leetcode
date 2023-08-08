@@ -20,10 +20,10 @@ public:
         if (nums1.size() - i > nums2.size() - j)
             return find(nums2, j, nums1, i, k);
 
-        if (i == nums1.size()) return nums2[j + k - 1];
+        if (nums1.size() == i) return nums2[j + k - 1];
         if (k == 1) return min(nums1[i], nums2[j]);
 
-        int si = min((int)nums1.size() - 1, i + k / 2 - 1), sj = j + k - k / 2 - 1;
+        int si = min(i + k / 2 - 1, int(nums1.size()) - 1), sj = j + k - k / 2 - 1;
         if (nums1[si] > nums2[sj])
             return find(nums1, i, nums2, sj + 1, k / 2);
         return find(nums1, si + 1, nums2, j, k - (si + 1 - i));

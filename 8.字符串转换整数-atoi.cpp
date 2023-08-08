@@ -13,8 +13,8 @@ public:
         while (k < s.size() && s[k] == ' ') k++;
 
         int sign = 1;
-        if (s[k] == '-') sign = -1, k++;
-        else if (s[k] == '+') k++;
+        if (s[k] == '+') k++;
+        else if (s[k] == '-') sign = -1, k++;
 
         int res = 0;
         while (k < s.size() && isdigit(s[k])) {
