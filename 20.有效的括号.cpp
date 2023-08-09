@@ -11,7 +11,7 @@ public:
     bool isValid(string s) {
         if (s.size() & 1) return false;
 
-        unordered_map<char, int> map = {{'(', ')'}, {'[', ']'}, {'{', '}'}};
+        unordered_map<char, char> map{{'(', ')'}, {'[', ']'}, {'{', '}'}};
         stack<char> stk;
         for (auto c : s) {
             if (map.count(c)) {
@@ -25,6 +25,8 @@ public:
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -40,3 +42,4 @@ public:
 // @lcpr case=end
 
  */
+
