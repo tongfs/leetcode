@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=27 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [27] 移除元素
  */
@@ -9,14 +9,16 @@
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        int k = 0;
+        int j = 0;
         for (int i = 0; i < nums.size(); i++)
             if (nums[i] != val)
-                nums[k++] = nums[i];
-        return k;
+                nums[j++] = nums[i];
+        return j;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -28,3 +30,4 @@ public:
 // @lcpr case=end
 
  */
+

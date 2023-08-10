@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=29 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [29] 两数相除
  */
@@ -9,9 +9,9 @@
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-        typedef long long LL;
-        vector<LL> exp; // 存放除数的幂
-        bool is_minus = dividend >= 0 ^ divisor > 0;
+        using LL = long long;
+        vector<LL> exp;
+        bool is_minus = dividend > 0 ^ divisor > 0;
 
         LL x = abs((LL)dividend), y = abs((LL)divisor);
         for (LL i = y; i <= x; i <<= 1) exp.push_back(i);
@@ -25,7 +25,7 @@ public:
         }
 
         if (is_minus) res = -res;
-        if (res > INT_MAX) res = INT_MAX;
+        res = min(res, (LL)INT_MAX);
         return res;
     }
 };
