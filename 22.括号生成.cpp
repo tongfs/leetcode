@@ -22,7 +22,7 @@ public:
         }
 
         if (l < n) dfs(l + 1, r, n, path + '(');
-        if (l > r) dfs(l, r + 1, n, path + ')');
+        if (r < l) dfs(l, r + 1, n, path + ')');
     }
 };
 // @lc code=end
