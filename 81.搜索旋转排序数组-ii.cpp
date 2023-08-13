@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=81 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [81] 搜索旋转排序数组 II
  */
@@ -9,18 +9,17 @@
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int t = nums[0];
-        while (nums.size() > 1 &&  nums.back() == t) nums.pop_back();
+        while (nums.size() > 1 && nums[0] == nums.back()) nums.pop_back();
 
         int l = 0, r = nums.size() - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;
-            if (nums[mid] >= t) l = mid;
+            if (nums[mid] >= nums[0]) l = mid;
             else r = mid - 1;
         }
 
-        if (target >= t) l = 0;
-        else l++, r = nums.size() - 1;
+        if (nums[0] > target) l++, r = nums.size() - 1;
+        else l = 0;
         while (l < r) {
             int mid = l + r >> 1;
             if (nums[mid] >= target) r = mid;

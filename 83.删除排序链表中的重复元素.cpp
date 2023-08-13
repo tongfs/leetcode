@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=82 lang=cpp
+ * @lc app=leetcode.cn id=83 lang=cpp
  * @lcpr version=21910
  *
- * [82] 删除排序链表中的重复元素 II
+ * [83] 删除排序链表中的重复元素
  */
 #include "mylib.h"
 // @lc code=start
@@ -19,14 +19,14 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        auto dummy = new ListNode(-1, head), p = dummy;
-        while (p && p->next) {
-            auto a = p->next, b = a->next;
-            while (b && a->val == b->val) a = b, b = b->next;
-            if (p->next == a) p = a;
-            else p->next = b;
+        auto p = head;
+        while (p) {
+            auto t = p->next;
+            while (t && p->val == t->val) t = t->next;
+            if (p->next == t) p = t;
+            else p = p->next = t;
         }
-        return dummy->next;
+        return head;
     }
 };
 // @lc code=end
@@ -35,11 +35,11 @@ public:
 
 /*
 // @lcpr case=start
-// [1,2,3,3,4,4,5]\n
+// [1,1,2]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [1,1,1,2,3]\n
+// [1,1,2,3,3]\n
 // @lcpr case=end
 
  */

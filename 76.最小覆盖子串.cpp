@@ -13,14 +13,13 @@ public:
         for (auto c : t) tmap[c]++;
 
         string res;
-        for (int i = 0, j = 0, cnt = 0; i < s.size(); i++) {
-            smap[s[i]]++;
-            if (smap[s[i]] <= tmap[s[i]]) cnt++;
-
-            while (smap[s[j]] > tmap[s[j]]) smap[s[j++]]--;
+        for (int i = 0, j = 0, cnt = 0; j < s.size(); j++) {
+            smap[s[j]]++;
+            if (smap[s[j]] <= tmap[s[j]]) cnt++;
+            while (smap[s[i]] > tmap[s[i]]) smap[s[i++]]--;
             if (cnt == t.size())
-                if (res.empty() || i - j + 1 < res.size())
-                    res = s.substr(j, i - j + 1);
+                if (res.empty() || j - i + 1 < res.size())
+                    res = s.substr(i, j - i + 1);
         }
         return res;
     }

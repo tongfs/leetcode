@@ -21,7 +21,6 @@ public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         auto dummy = new ListNode(-1, head), p = dummy;
         for (int i = 1; i < left; i++) p = p->next;
-
         auto a = p->next, b = a->next;
         for (int i = 0; i < right - left; i++) {
             auto c = b->next;
@@ -30,7 +29,6 @@ public:
         }
         p->next->next = b;
         p->next = a;
-
         return dummy->next;
     }
 };

@@ -9,16 +9,18 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int res = INT_MIN;
-        for (int i = 0, t = 0; i < nums.size(); i++) {
-            t += nums[i];
-            res = max(res, t);
-            t = max(t, 0);
+        int res = INT_MIN, cur_sum = 0;
+        for (auto x : nums) {
+            cur_sum += x;
+            res = max(res, cur_sum);
+            cur_sum = max(cur_sum, 0);
         }
         return res;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -34,3 +36,4 @@ public:
 // @lcpr case=end
 
  */
+
