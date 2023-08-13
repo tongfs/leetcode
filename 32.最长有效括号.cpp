@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=32 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [32] 最长有效括号
  */
@@ -9,24 +9,27 @@
 class Solution {
 public:
     int longestValidParentheses(string s) {
-        stack<int> stk; // 存放左括号的下标
+        stack<int> stk;
         int res = 0;
-
         for (int i = 0, st = -1; i < s.size(); i++) {
-            if (s[i] == '(') stk.push(i);
-            else {
+            if (s[i] == '(') {
+                stk.push(i);
+            } else {
                 if (stk.size()) {
                     stk.pop();
                     if (stk.size()) res = max(res, i - stk.top());
                     else res = max(res, i - st);
-                } else st = i;
+                } else {
+                    st = i;
+                }
             }
         }
-
         return res;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -42,3 +45,4 @@ public:
 // @lcpr case=end
 
  */
+

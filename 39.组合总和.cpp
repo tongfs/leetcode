@@ -12,28 +12,31 @@ public:
     vector<vector<int>> res;
 
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        dfs(candidates, target, 0);
+        dfs(0, target, candidates);
         return res;
     }
 
-    void dfs(vector<int>& nums, int target, int start) {
+    void dfs(int u, int target, vector<int>& nums) {
         if (target == 0) {
             res.push_back(path);
             return;
         }
 
-        if (start == nums.size()) return;
+        if (u == nums.size()) return;
 
-        for (int i = 0; nums[start] * i <= target; i++) {
-            dfs(nums, target - nums[start] * i, start + 1);
-            path.push_back(nums[start]);
+        for (int i = 0; nums[u] * i <= target; i++) {
+            dfs(u + 1, target - nums[u] * i, nums);
+            path.push_back(nums[u]);
         }
 
-        for (int i = 0; nums[start] * i <= target; i++)
+        for (int i = 0; nums[u] * i <= target; i++) {
             path.pop_back();
+        }
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -49,3 +52,4 @@ public:
 // @lcpr case=end
 
  */
+

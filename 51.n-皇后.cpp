@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=51 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [51] N 皇后
  */
@@ -14,7 +14,7 @@ public:
 
     vector<vector<string>> solveNQueens(int n) {
         col = vector<bool>(n);
-        dg = udg = vector<bool>(2 * n);
+        dg = udg = vector<bool>(n * 2);
         path = vector<string>(n, string(n, '.'));
 
         dfs(0, n);
@@ -40,6 +40,8 @@ public:
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
 // 4\n
@@ -50,3 +52,4 @@ public:
 // @lcpr case=end
 
  */
+

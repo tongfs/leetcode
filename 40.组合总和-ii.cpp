@@ -13,39 +13,43 @@ public:
 
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
         sort(candidates.begin(), candidates.end());
-        dfs(candidates, target, 0);
+        dfs(0, target, candidates);
         return res;
     }
 
-    void dfs(vector<int>& nums, int target, int start) {
+    void dfs(int u, int target, vector<int>& nums) {
         if (target == 0) {
             res.push_back(path);
             return;
         }
 
-        if (start == nums.size()) return;
+        if (u == nums.size()) return;
 
         int len = 1;
-        while (start + len < nums.size() && nums[start] == nums[start + len]) len++;
-        
-        for (int i = 0; nums[start] * i <= target && i <= len; i++) {
-            dfs(nums, target - nums[start] * i, start + len);
-            path.push_back(nums[start]);
+        while (u + len < nums.size() && nums[u] == nums[u + len]) len++;
+
+        for (int i = 0; i <= len && nums[u] * i <= target; i++) {
+            dfs(u + len, target - nums[u] * i, nums);
+            path.push_back(nums[u]);
         }
 
-        for (int i = 0; nums[start] * i <= target && i <= len; i++)
+        for (int i = 0; i <= len && nums[u] * i <= target; i++) {
             path.pop_back();
+        }
     }
 };
 // @lc code=end
 
+
+
 /*
 // @lcpr case=start
-// [10,1,2,7,6,1,5]\n8\n
+// [10,1,2,7,6,1,5]\n8,\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [2,5,2,1,2]\n5\n
+// [2,5,2,1,2]\n5,\n
 // @lcpr case=end
 
  */
+

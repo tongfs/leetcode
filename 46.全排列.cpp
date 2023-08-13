@@ -13,11 +13,11 @@ public:
     vector<vector<int>> res;
 
     vector<vector<int>> permute(vector<int>& nums) {
-        dfs(nums, 0);
+        dfs(0, nums);
         return res;
     }
 
-    void dfs(vector<int>& nums, int u) {
+    void dfs(int u, vector<int>& nums) {
         if (u == nums.size()) {
             res.push_back(path);
             return;
@@ -27,7 +27,7 @@ public:
             if (!st[i]) {
                 st[i] = true;
                 path.push_back(nums[i]);
-                dfs(nums, u + 1);
+                dfs(u + 1, nums);
                 path.pop_back();
                 st[i] = false;
             }
@@ -35,6 +35,8 @@ public:
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -50,3 +52,4 @@ public:
 // @lcpr case=end
 
  */
+
