@@ -20,7 +20,7 @@
  */
 class Solution {
 public:
-    unordered_map<int, unordered_map<int, vector<TreeNode*>>> map;
+    unordered_map<int, vector<TreeNode*>> map;
 
     vector<TreeNode*> generateTrees(int n) {
         return dfs(1, n);
@@ -28,7 +28,7 @@ public:
 
     vector<TreeNode*> dfs(int l, int r) {
         if (l > r) return {nullptr};
-        if (map[l][r].size()) return map[l][r];
+        if (map[l * 10 + r].size()) return map[l * 10 + r];
 
         vector<TreeNode*> res;
         for (int i = l; i <= r; i++) {
@@ -41,7 +41,8 @@ public:
                 }
             }
         }
-        return map[l][r] = res;
+
+        return map[l * 10 + r] = res;
     }
 };
 // @lc code=end

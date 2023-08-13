@@ -20,15 +20,15 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        return dfs(root, LONG_MIN, LONG_MAX);
+       return dfs(root, LONG_MIN, LONG_MAX);
     }
 
-    bool dfs(TreeNode* root, long long min_v, long long max_v) {
+    bool dfs(TreeNode* root, long long l, long long r) {
         if (!root) return true;
-        if (root->val <= min_v || root->val >= max_v) return false;
-        return dfs(root->left, min_v, root->val) &&
-               dfs(root->right, root->val, max_v);
+        if (root->val <= l || root->val >= r) return false;
+        return dfs(root->left, l, root->val) && dfs(root->right, root->val, r);
     }
+
 };
 // @lc code=end
 

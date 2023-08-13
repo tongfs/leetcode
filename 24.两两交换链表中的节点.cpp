@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=24 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [24] 两两交换链表中的节点
  */
@@ -18,20 +18,22 @@
  */
 class Solution {
 public:
-    ListNode* swapPairs(ListNode* head) { 
-        auto dummy = new ListNode(-1, head);
-        auto pre = dummy, cur = dummy->next;
-        while (cur && cur->next) {
-            auto p = cur->next, q = p->next;
-            p->next = cur;
-            pre->next = p;
-            cur->next = q;
-            pre = cur, cur = q;
+    ListNode* swapPairs(ListNode* head) {
+        auto dummy = new ListNode(-1, head), p = dummy;
+        auto a = p->next;
+        while (a && a->next) {
+            auto b = a->next, c = b->next;
+            b->next = a;
+            a->next = c;
+            p->next = b;
+            p = a, a = a->next;   
         }
         return dummy->next;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -47,3 +49,4 @@ public:
 // @lcpr case=end
 
  */
+
