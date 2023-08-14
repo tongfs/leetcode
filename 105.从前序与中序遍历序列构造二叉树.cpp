@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=105 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [105] 从前序与中序遍历序列构造二叉树
  */

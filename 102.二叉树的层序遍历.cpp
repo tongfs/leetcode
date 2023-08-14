@@ -14,21 +14,18 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
- * right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
         queue<TreeNode*> q;
         if (root) q.push(root);
-
-        vector<vector<int>> res;
         while (q.size()) {
             vector<int> line;
             int len = q.size();
-            
             while (len--) {
                 auto t = q.front();
                 q.pop();
@@ -38,11 +35,12 @@ public:
             }
             res.push_back(line);
         }
-
         return res;
     }
 };
 // @lc code=end
+
+
 
 /*
 // @lcpr case=start
@@ -58,3 +56,4 @@ public:
 // @lcpr case=end
 
  */
+

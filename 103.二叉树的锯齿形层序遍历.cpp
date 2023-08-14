@@ -20,16 +20,15 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+
         queue<TreeNode*> q;
         if (root) q.push(root);
 
         bool flag = false;
-        vector<vector<int>> res;
-
         while (q.size()) {
-            vector<int> line;
             int len = q.size();
-
+            vector<int> line;
             while (len--) {
                 auto t = q.front();
                 q.pop();
@@ -41,7 +40,7 @@ public:
             flag = !flag;
             res.push_back(line);
         }
-
+        
         return res;
     }
 };

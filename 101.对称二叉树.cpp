@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=101 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [101] 对称二叉树
  */

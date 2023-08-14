@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=108 lang=cpp
- * @lcpr version=21909
+ * @lcpr version=21910
  *
  * [108] 将有序数组转换为二叉搜索树
  */
@@ -24,12 +24,12 @@ public:
     }
 
     TreeNode* dfs(vector<int>& nums, int l, int r) {
-        if (l == r) return new TreeNode(nums[l]);
+        if (l > r) return nullptr;
 
         int mid = l + r >> 1;
         auto root = new TreeNode(nums[mid]);
-        if (l < mid) root->left = dfs(nums, l, mid - 1);
-        if (mid < r) root->right = dfs(nums, mid + 1, r);
+        root->left = dfs(nums, l, mid - 1);
+        root->right = dfs(nums, mid + 1, r);
         return root;
     }
 };
