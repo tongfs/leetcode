@@ -19,8 +19,6 @@
  */
 class Solution {
 public:
-    bool res = false;
-
     bool hasPathSum(TreeNode* root, int targetSum) {
         if (!root) return false;
         if (!root->left && !root->right) return root->val == targetSum;

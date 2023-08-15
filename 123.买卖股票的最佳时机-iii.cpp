@@ -22,7 +22,6 @@ public:
             res = max(res, f[i - 1] + max_price - prices[i - 1]);
             max_price = max(max_price, prices[i - 1]);
         }
-
         return res;
     }
 };
